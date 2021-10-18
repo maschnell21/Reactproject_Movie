@@ -17,6 +17,17 @@
     height: 100%;
   }
 }
+.card-bottom {
+  padding: 20px;
+}
+.card-info {
+  color: $font-primary;
+  h4 {
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+}
 
 .card-bottom {
   padding: 20px;

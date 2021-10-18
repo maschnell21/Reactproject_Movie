@@ -1,30 +1,14 @@
 import React, { useEffect } from "react";
-import  MovieListing  from "../MovieListing/MovieListing";
-import movieApi from "../../common/apis/movieApi";
-import { APIKey } from "../../common/apis/MovieApiKey";
+import MovieListing from "../MovieListing/MovieListing";
 import { useDispatch } from "react-redux";
-import { addMovies } from "../../features/movie/movieSlice";
-// http://www.omdbapi.com/?i=tt3896198&apikey=d93678da
+// import { addMovies } from "../../features/movie/movieSlice";
+import {fetchAsyncMovies, fetchAsyncShows} from "../../features/movie/movieSlice"
 const Home = () => {
-  const movieText = "Harry";
   const dispatch = useDispatch();
   useEffect(() => {
-    const fetchMovies = async () => {
-      const response = await movieApi
-        .get(`?apiKey=${APIKey}&s=${movieText}&type=movie`)
-        // .get(`http://www.omdbapi.com/?i=tt3896198&apikey=d93678da`)
-        // .get("https://jsonplaceholder.typicode.com/users")
-        .catch((err) => {
-          console.log("Err:", err);
-        });
-      //   console.log("data");
-      // console.log(response);
-      dispatch(addMovies(response.data));
-    };
-    fetchMovies();
-    // console.log("data");
-  }, []);
-
+   dispatch(fetchAsyncMovies());
+   dispatch(fetchAsyncShows());
+     },[dispatch]);
   return (
     <div>
       <div className="banner-img"></div>
